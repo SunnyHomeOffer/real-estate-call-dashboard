@@ -5,7 +5,8 @@ import streamlit as st
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv("data.csv")
+    sheet_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSqX2UIjXuKu7noH2QLT8k-YfNbWtJgmPbYuaunoOdy51UVtT4IQqvl-fhT0XtxTbe66FE1savHnNVv/pub?gid=286064860&single=true&output=csv"
+df = pd.read_csv(sheet_url)
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
     df['DayOfWeek'] = df['Date'].dt.day_name()
     cols_to_num = ['Total Dials', 'Conversations', 'Leads', 'Offer Made', 'Total Correct Numbers',
